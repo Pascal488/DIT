@@ -1,3 +1,14 @@
+<?php
+
+if(isset($_POST["submitButton"])){
+    echo "Submitted";
+
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,25 +21,18 @@
 <body>
     <div class="container">
         <div class="column">
-            <h1>Register here</h1>
+            <h3>Register here</h3>
             <form action="" method="post">
-                <p>
-                <label for="firstname">FirstName</label> <br>
-                <input type="text">
-                </p>
-                <p>
-                <label for="firstname">FirstName</label> <br>
-                <input type="text">
-                </p> <p>
-                <label for="firstname">FirstName</label> <br>
-                <input type="text">
-                </p> <p>
-                <label for="firstname">FirstName</label> <br>
-                <input type="text">
-                </p> 
-                <button>
-                    Register
-                </button>
+                <input type="text" name="firstname" placeholder="Firstname" required>
+                <input type="text" name="lastName" placeholder="Lastname" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="comfirmpassword" placeholder="ComfirmPassword" required>
+                <input type="email" name="email1" placeholder="Email" required>
+                <input type="email" name="email2" placeholder="Comfirm email" required>
+
+
+                <input type="submit" value="SUBMIT" name="submitButton">
             
                 
                 
