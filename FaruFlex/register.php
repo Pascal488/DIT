@@ -30,14 +30,11 @@ if(isset($_POST["submitButton"])){
                 <input type="password" name="comfirmpassword" placeholder="ComfirmPassword" required>
                 <input type="email" name="email1" placeholder="Email" required>
                 <input type="email" name="email2" placeholder="Comfirm email" required>
-
-
                 <input type="submit" value="SUBMIT" name="submitButton">
-            
-                
-                
 
             </form>
+            <a href="register.php" class="signInMessage">Need an account? Sign up here!</a>
+            
         </div>
     </div>
 </body>
