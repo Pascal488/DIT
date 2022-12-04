@@ -1,7 +1,22 @@
 <?php
-
 if(isset($_POST["submitButton"])){
-    echo "Submitted";
+    $firstname = sanitazingInputs($_POST["firstname"]);
+    echo "$firstname";
+
+
+}
+
+function sanitazingInputs($inputText){
+    //Removing any html tags
+    $inputText = strip_tags($inputText);
+    //Removing spaces in input text
+    $inputText = trim($inputText);
+    //Change a string to lowerCase
+    $inputText = strtolower($inputText);
+    //Captalizing a first latter of a string
+    $inputText = ucfirst($inputText);
+
+    return $inputText;
 
 }
 
