@@ -34,11 +34,14 @@ h1{
 .column form input[type="email"],
 .column form input[type="text"],
 .column form input[type="password"]{
+    outline: none;
+    padding: 10px;
     font-size: 14px;
     margin: 10px 0px;
     border: none;
     border-bottom: 1px solid gray;
 }
+
 .column form input[type="submit"]{
     background-color: blue;
     color: #fff;
@@ -49,4 +52,14 @@ h1{
     font-weight: 500;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+.column form input[type="submit"]:hover{
+    cursor: pointer;
+
+}
+
+.signInMessage {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
 }

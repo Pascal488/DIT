@@ -46,23 +46,26 @@ if(isset($_POST["submitButton"])){
         <div class="column">
             <h3>Register here</h3>
             <form action="" method="post">
-                <?php echo $Account->getError(Constants::$firstNameCharacters); ?>
-                <input type="text" name="firstname" placeholder="Firstname" required>
+                <?php echo $Account->getError(Constants::$emptyInputs); ?><br/>
+                <br/><?php echo $Account->getError(Constants::$firstNameCharacters); ?>
+                <input type="text" name="firstname" placeholder="Firstname" >
                 <?php echo $Account->getError(Constants::$lastNameCharacters); ?>
-                <input type="text" name="lastname" placeholder="Lastname" required>
+                <input type="text" name="lastname" placeholder="Lastname" >
                 <?php echo $Account->getError(Constants::$usernameCharacters); ?>
                 <?php echo $Account->getError(Constants::$usernameTaken); ?>
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="username" placeholder="Username" >
                 <?php echo $Account->getError(Constants::$emailMatch); ?>
                 <?php echo $Account->getError(Constants::$emailTaken); ?>
-                <input type="email" name="email1" placeholder="Email" required>
-                <input type="email" name="email2" placeholder="Comfirm email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="password2" placeholder="ComfirmPassword" required>
-                <input type="submit" value="SUBMIT" name="submitButton">
+                <input type="email" name="email1" placeholder="Email" >
+                <input type="email" name="email2" placeholder="Comfirm email" >
+                <?php echo $Account->getError(Constants::$passwordMatch); ?>
+                <input type="password" name="password" placeholder="Password" >
+                <input type="password" name="password2" placeholder="ComfirmPassword" >
+                <input type="submit" value="SUBMIT" name="submitButton"id="submitButton" >
             </form>
             <a href="login.php" class="signInMessage">Already have an account? Sign in here!</a>
         </div>
     </div>
+
 </body>
 </html>
