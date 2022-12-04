@@ -1,0 +1,10 @@
+<?php
+class Constants{
+    public static $firstNameCharacters = "Your firstname must be between 2 and 25 characters";
+    public static $lastNameCharacters = "Your firstname must be between 2 and 45 characters";
+    public static $usernameCharacters = "Enter a valid username";
+    public static $usernameTaken = "Username taken";
+    public static $emailMatch = "Email do not match";
+
+}
+?>
