@@ -1,20 +1,24 @@
 <?php
-
 //Importing a class from another folder
-require_once("Classes/FormSanitize.php")
+require_once("Classes/FormSanitize.php");
+require_once("Classes/config.php");
+
+
 if(isset($_POST["submitButton"])){
+    //FormSanitize::.-> represent a static function
     $firstname = FormSanitize::sanitazingInputs($_POST["firstname"]);
     $lastname = FormSanitize::sanitazingInputs($_POST["lastname"]);
     $username = FormSanitize::sanitazingUsername($_POST["username"]);
     $password = FormSanitize::sanitazingPassword($_POST["password"]);
-    $password2 = FormSanitize::sanitazingPassword($_POST["comfirmpassword"]);
+    $password2 = FormSanitize::sanitazingPassword($_POST["password2"]);
     $email1 = FormSanitize::sanitazingEmail($_POST["email1"]);
     $email2 = FormSanitize::sanitazingEmail($_POST["email2"]);
 
 
 
-}
+    
 
+}
 
 
 
@@ -36,17 +40,15 @@ if(isset($_POST["submitButton"])){
             <h3>Register here</h3>
             <form action="" method="post">
                 <input type="text" name="firstname" placeholder="Firstname" required>
-                <input type="text" name="lastName" placeholder="Lastname" required>
+                <input type="text" name="lastname" placeholder="Lastname" required>
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="comfirmpassword" placeholder="ComfirmPassword" required>
+                <input type="password" name="password2" placeholder="ComfirmPassword" required>
                 <input type="email" name="email1" placeholder="Email" required>
                 <input type="email" name="email2" placeholder="Comfirm email" required>
                 <input type="submit" value="SUBMIT" name="submitButton">
-
             </form>
-            <a href="register.php" class="signInMessage">Need an account? Sign up here!</a>
-            
+            <a href="login.php" class="signInMessage">Already have an account? Sign in here!</a>
         </div>
     </div>
 </body>
