@@ -43,6 +43,18 @@ class Account {
     public function validateEmail($email1,$email2){
         if($email1 != $email2){
             array_push($this->errorArray,Constants::$emailMatch);
+            return;
+        }
+        $query = $this->connection->prepare("SELECT * FROM users WHERE email=:email1");
+        $query->bindvalue(":email",$email1);
+        $query->execute();
+        if($query->rowCount() != 0){
+            array_push($this->errorArray,Constants::$emailTaken);
+            return;
+
+        }
+        if(!filter_var($email1,FILTER_VALIDATE_EMAIL)){
+            array_push($this->errorArray,Constants::$emailInvalid);
 
         }
     }

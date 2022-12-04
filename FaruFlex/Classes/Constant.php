@@ -5,6 +5,8 @@ class Constants{
     public static $usernameCharacters = "Enter a valid username";
     public static $usernameTaken = "Username taken";
     public static $emailMatch = "Email do not match";
+    public static $emailInvalid = "Invalid email";
+    public static $emailTaken = "Email taken";
 
 }
 ?>
