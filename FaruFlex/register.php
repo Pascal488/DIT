@@ -1,24 +1,21 @@
 <?php
+
+//Importing a class from another folder
+require_once("Classes/FormSanitize.php")
 if(isset($_POST["submitButton"])){
-    $firstname = sanitazingInputs($_POST["firstname"]);
-    echo "$firstname";
+    $firstname = FormSanitize::sanitazingInputs($_POST["firstname"]);
+    $lastname = FormSanitize::sanitazingInputs($_POST["lastname"]);
+    $username = FormSanitize::sanitazingUsername($_POST["username"]);
+    $password = FormSanitize::sanitazingPassword($_POST["password"]);
+    $password2 = FormSanitize::sanitazingPassword($_POST["comfirmpassword"]);
+    $email1 = FormSanitize::sanitazingEmail($_POST["email1"]);
+    $email2 = FormSanitize::sanitazingEmail($_POST["email2"]);
 
 
-}
-
-function sanitazingInputs($inputText){
-    //Removing any html tags
-    $inputText = strip_tags($inputText);
-    //Removing spaces in input text
-    $inputText = trim($inputText);
-    //Change a string to lowerCase
-    $inputText = strtolower($inputText);
-    //Captalizing a first latter of a string
-    $inputText = ucfirst($inputText);
-
-    return $inputText;
 
 }
+
+
 
 
 ?>
