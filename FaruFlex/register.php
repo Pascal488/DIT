@@ -2,7 +2,10 @@
 //Importing a class from another folder
 require_once("Classes/FormSanitize.php");
 require_once("Classes/config.php");
+require_once("Classes/Account.php");
+require_once("Classes/Constant.php");
 
+$Account = new Account($connection);
 
 if(isset($_POST["submitButton"])){
     //FormSanitize::.-> represent a static function
@@ -13,6 +16,10 @@ if(isset($_POST["submitButton"])){
     $password2 = FormSanitize::sanitazingPassword($_POST["password2"]);
     $email1 = FormSanitize::sanitazingEmail($_POST["email1"]);
     $email2 = FormSanitize::sanitazingEmail($_POST["email2"]);
+
+   
+    $Account->register($firstname,$lastname,$email1,$email2,$password,$password2,$username);
+
 
 
 
@@ -39,13 +46,18 @@ if(isset($_POST["submitButton"])){
         <div class="column">
             <h3>Register here</h3>
             <form action="" method="post">
+                <?php echo $Account->getError(Constants::$firstNameCharacters); ?>
                 <input type="text" name="firstname" placeholder="Firstname" required>
+                <?php echo $Account->getError(Constants::$lastNameCharacters); ?>
                 <input type="text" name="lastname" placeholder="Lastname" required>
+                <?php echo $Account->getError(Constants::$usernameCharacters); ?>
+                <?php echo $Account->getError(Constants::$usernameTaken); ?>
                 <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="password2" placeholder="ComfirmPassword" required>
+                <?php echo $Account->getError(Constants::$emailMatch); ?>
                 <input type="email" name="email1" placeholder="Email" required>
                 <input type="email" name="email2" placeholder="Comfirm email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password2" placeholder="ComfirmPassword" required>
                 <input type="submit" value="SUBMIT" name="submitButton">
             </form>
             <a href="login.php" class="signInMessage">Already have an account? Sign in here!</a>
