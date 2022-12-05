@@ -1,29 +1,45 @@
 <?php
 class Account {
-
     private $connection;
     private $errorArray = array();
     public function __construct($connection) {
         $this->connection = $connection;
     }
-    public function register($firstname,$lastname,$email1,$email2,$password,$password2,$username){
+    public function register($firstname,$lastname,$email1,$email2,$password1,$password2,$username){
         //Calling to execute all functions of validating
         $this->validateFirstName($firstname);
         $this->validateLastName($lastname);
         $this->validateUserName($username);
         $this->validateEmail($email1,$email2);
-        $this->validatePassword($password,$password2);
-        $this->validateEmptyInputs($firstname,$lastname,$email1,$email2,$password,$password2,$username);
+        $this->validatePassword($password1,$password2);
 
-
-    }
-    public function validateEmptyInputs($firstname,$lastname,$email1,$email2,$password,$password2,$username){
-        if($firstname||$lastname||$email1||$email2||$password||$password2||$username == ""){
-            array_push($this->errorArray,Constants::$emptyInputs);
-            return;
-
+        //Giving a conditional statement before calling a function that can insert data to db
+        //So the conditional says if there is no any error into the errorArray the function can be executed and insert details to the db
+        if(empty($this->errorArray)){
+            return $this->insertUserIntoDb($firstname,$lastname,$email1,$password1,$username);
         }
+        return false;
     }
+    //Function to enter users into a db
+    private function insertUserIntoDb($firstname,$lastname,$email1,$password1,$username){
+        //Hashing password
+        $password1 = hash("sha512",$password1);
+        //The attribute must match like those from the db
+        $query = $this->connection->prepare("INSERT INTO users(firstName,lastName,userName,email,password)
+                                            VALUES (:firstname,:lastname,:username,:email1,:password1)");
+        $query->bindValue(":firstname",$firstname);
+        $query->bindValue(":lastname",$lastname);
+        $query->bindValue(":email1",$email1);
+        $query->bindValue(":password1",$password1);
+        $query->bindValue(":username",$username);
+
+        // $query->execute();
+        // var_dump($query->errorInfo());
+        return $query->execute();
+        // return false;
+
+    }
+  
     public function validateFirstName($firstname){
         //Checking firsrname characters
         if(strlen($firstname)<2 ||strlen($firstname)>25 ){
@@ -74,17 +90,17 @@ class Account {
 
         }
     }
-    private function validatePassword($password,$password2){
+    private function validatePassword($password1,$password2){
         //Checking if the two passwords are the same
-        if($password != $password2){
+        if($password1 != $password2){
             array_push($this->errorArray,Constants::$passwordMatch);
             return;
         }
     }
-
+    //Function to validate if there is any errors in the array and return and to the span html element
     public function getError($error){
         if(in_array($error,$this->errorArray)){
-            return $error;
+            return "<span class='errorMessage'>$error</span>";
         }
 
     }
