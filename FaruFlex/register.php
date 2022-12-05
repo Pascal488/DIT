@@ -12,15 +12,16 @@ if(isset($_POST["submitButton"])){
     $firstname = FormSanitize::sanitazingInputs($_POST["firstname"]);
     $lastname = FormSanitize::sanitazingInputs($_POST["lastname"]);
     $username = FormSanitize::sanitazingUsername($_POST["username"]);
-    $password = FormSanitize::sanitazingPassword($_POST["password"]);
+    $password1 = FormSanitize::sanitazingPassword($_POST["password1"]);
     $password2 = FormSanitize::sanitazingPassword($_POST["password2"]);
     $email1 = FormSanitize::sanitazingEmail($_POST["email1"]);
     $email2 = FormSanitize::sanitazingEmail($_POST["email2"]);
 
-   
-    $Account->register($firstname,$lastname,$email1,$email2,$password,$password2,$username);
+  $success =  $Account->register($firstname,$lastname,$email1,$email2,$password1,$password2,$username);
 
-
+    if($success){
+        header("Location: index.php");
+    }
 
 
     
@@ -46,7 +47,6 @@ if(isset($_POST["submitButton"])){
         <div class="column">
             <h3>Register here</h3>
             <form action="" method="post">
-                <?php echo $Account->getError(Constants::$emptyInputs); ?><br/>
                 <br/><?php echo $Account->getError(Constants::$firstNameCharacters); ?>
                 <input type="text" name="firstname" placeholder="Firstname" >
                 <?php echo $Account->getError(Constants::$lastNameCharacters); ?>
@@ -59,7 +59,7 @@ if(isset($_POST["submitButton"])){
                 <input type="email" name="email1" placeholder="Email" >
                 <input type="email" name="email2" placeholder="Comfirm email" >
                 <?php echo $Account->getError(Constants::$passwordMatch); ?>
-                <input type="password" name="password" placeholder="Password" >
+                <input type="password" name="password1" placeholder="Password" >
                 <input type="password" name="password2" placeholder="ComfirmPassword" >
                 <input type="submit" value="SUBMIT" name="submitButton"id="submitButton" >
             </form>
