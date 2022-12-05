@@ -17,9 +17,28 @@ class Account {
         //So the conditional says if there is no any error into the errorArray the function can be executed and insert details to the db
         if(empty($this->errorArray)){
             return $this->insertUserIntoDb($firstname,$lastname,$email1,$password1,$username);
+           
+
         }
         return false;
     }
+    public function login($username, $password1) {
+        $password1 = hash("sha512", $password1);
+
+        $query = $this->connection->prepare("SELECT * FROM users WHERE userName=:username AND password=:password1");
+        $query->bindValue(":username", $username);
+        $query->bindValue(":password1", $password1);
+
+        $query->execute();
+
+        if($query->rowCount() == 1) {
+            return true;
+        }
+
+        array_push($this->errorArray, Constants::$loginFailed);
+        return false;
+    }
+
     //Function to enter users into a db
     private function insertUserIntoDb($firstname,$lastname,$email1,$password1,$username){
         //Hashing password

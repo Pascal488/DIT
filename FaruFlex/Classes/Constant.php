@@ -8,6 +8,7 @@ class Constants{
     public static $emailInvalid = "Invalid email";
     public static $emailTaken = "Email taken";
     public static $passwordMatch = "Password do not match";
+    public static $loginFailed = "Your username or password was incorrect";
     
 
 }
