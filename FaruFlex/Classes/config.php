@@ -6,8 +6,8 @@
 
 
 try{
-        //Conneting to database database name = netfleClone host localhost
-        $connection = new PDO("mysql:dbname=netflixClone;host=localhost","root","");
+        //Conneting to database database name = NameofDb host localhost
+        $connection = new PDO("mysql:dbname=NameofDB ;host=localhost","root","");
         $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
     }
     catch(PDOException $e){
