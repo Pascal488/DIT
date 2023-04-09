@@ -1,0 +1,70 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+h1{
+    text-align: center;
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+}
+.column{
+    background-color: #fff;
+    min-height: 300px;
+    max-height: 100%;
+    width: 450px;
+    padding: 20px 35px;
+    box-shadow: rgba(0,0,0, 0.1) 0 1px 2px;
+}
+.column form{
+    display: flex;
+    flex-direction: column;
+}
+.column form input[type="email"],
+.column form input[type="text"],
+.column form input[type="password"]{
+    outline: none;
+    padding: 10px;
+    font-size: 14px;
+    margin: 10px 0px;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.column form input[type="submit"]{
+    background-color: blue;
+    color: #fff;
+    height: 36px;
+    width: 88px;
+    border: none;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.column form input[type="submit"]:hover{
+    cursor: pointer;
+
+}
+
+.signInMessage {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+}
+.errorMessage{
+    color: red;
+    font-size: 12px;
+    font-weight: 100;
+}
