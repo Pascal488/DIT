@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  .form-style{
+      @apply flex flex-col gap-5 justify-center md:w-3/4 p-5;
+  }
+  .button-primary {
+      @apply px-3 py-2.5 rounded-md bg-blue-600 text-white;
+  }
+  .button-secondary{
+      @apply px-3 py-2.5  bg-white border-[1px] border-gray-500 rounded-md;
+  }
+  .input-primary{
+      @apply border-[1px] border-gray-400 w-[330px] p-2.5 rounded-md outline-none md:w-full;
+  }
+  .passwordinput-style{
+      @apply   outline-none w-full;
+  }
+  .password-wrapper{
+      @apply flex items-center justify-between border-[1px] border-gray-400 w-[330px] p-2.5  rounded-md md:w-full;
+  }
+}
