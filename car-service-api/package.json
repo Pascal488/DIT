@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "mobile-car-wash-service",
+  "version": "1.0.0",
+  "description": "This is a server for ...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Paschal Maximillian",
+  "license": "ISC",
+  "devDependencies": {
+    "@apollo/server": "^4.7.0",
+    "graphql": "^16.6.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "mongoose": "^7.0.4"
+  }
+}
